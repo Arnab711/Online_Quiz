@@ -1,0 +1,106 @@
+{% load static %} 
+   <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        .header {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .about {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .about h2 {
+            margin-top: 0;
+        }
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .team-member {
+            background: #fff;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            flex-basis: 30%;
+        }
+        .team-member img {
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+        }
+        .team-member h3 {
+            margin: 10px 0;
+        }
+        .team-member p {
+            margin: 0;
+        }
+        @media (max-width: 768px) {
+            .team-member {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+    <div class="header">
+        <h1>About Us</h1>
+    </div>
+    <div class="container">
+        <div class="about">
+            <h2>Our Mission</h2>
+            <p>
+                Our mission is to provide better coding experience, ensuring that our customers receive the highest quality coding questions which helps them in logic building and competitive coding.
+            </p>
+            <h2>Our Vision</h2>
+            <p>
+                Our goal is to provide easy way of learning coding.
+            </p>
+            <h2>Our Values</h2>
+            <p>
+                Our core values are the foundation of our company. They include:
+                <ul>
+                    <li>Integrity: We believe in doing the right thing, always.</li>
+                    <li>Innovation: We continuously seek new and better ways to serve our customers.</li>
+                    <li>Customer Focus: Our customers are at the heart of everything we do.</li>
+                    <li>Excellence: We strive for excellence in every aspect of our business.</li>
+                </ul>
+            </p>
+            <h2>Meet the Team</h2>
+            <div class="team">
+                <div class="team-member">
+                    <img src="{% static 'images/Utkarsh.jpg' %}" alt="Team Member 1">
+                    <h3><a href="http://www.linkedin.com/in/utkarsh-dubey-4ab551232"  target='__blank' style="color: #181818; text-decoration: none;">Utkarsh Dubey</a></h3>
+                    <p>Developer</p>
+                </div>
+                <div class="team-member">
+                    <img src="{% static 'images/Arnab.jpg' %}" alt="Team Member 2">
+                    <h3><a href=https://www.linkedin.com/in/arnab-mukherjee-859070228/ target='__blank' style="color: #181818; text-decoration: none;">Arnab Mukherjee</a></h3>
+                    <p>Developer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% include "footer.html" %}

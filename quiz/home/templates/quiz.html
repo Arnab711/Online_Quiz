@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h2>Quiz</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="quizForm" method='POST' action="{% url 'submit-quiz' %}">
+                            {% csrf_token %}
+                            {% for question in data %}
+                            <div class="mb-4">
+                                <h5>{{ forloop.counter }}. {{ question.question }}</h5>
+                                {% for answer in question.answers %}
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="question{{ forloop.parentloop.counter }}" id="q{{ forloop.parentloop.counter }}a{{ forloop.counter }}" value="{{ answer.uuid}}">
+                                    <label class="form-check-label" for="q{{ forloop.parentloop.counter }}a{{ forloop.counter }}">
+                                        {{ answer.answer }}
+                                    </label>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            {% endfor %}
+                            <button type="submit" class="btn btn-primary btn-block">Submit Quiz</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!--<script>
+        document.getElementById('quizForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+            var formData = new FormData(event.target);
+            var answers = {};
+            formData.forEach((value, key) => {
+                answers[key] = value;
+            });
+            console.log('Submitted Answers:', answers);
+            // You can now use the answers object to perform further actions, such as:
+            // - Sending the answers to the server via an API call
+            // - Showing the user their score
+            // For demonstration, we'll just alert the submitted answers
+            alert('Submitted Answers: ' + JSON.stringify(answers));
+        });
+    </script>  -->
+</body>
+</html>
